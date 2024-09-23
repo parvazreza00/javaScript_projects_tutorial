@@ -1,0 +1,44 @@
+
+:root{
+    --success-color: green;
+    --error-color: red;
+}
+
+.container{
+    position: relative;
+    background-color: #fff;
+    border: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;  
+}
+
+.formControl input{
+    border: 2px solid grey;
+}
+
+.formControl.success{
+    border-color: var(--success-color);
+}
+
+.formControl.error{
+    border-color: var(--error-color);
+}
+
+.formControl small{
+    position: absolute;
+    color: var(--error-color);
+    visibility: hidden;
+}
+
+.formControl.error small{
+    visibility: visible;
+}
+
+.h2class{
+    padding:10px 0px;
+    text-align: center;
+    text-transform: capitalize;
+    color: rgb(154, 31, 10);
+}
