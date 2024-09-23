@@ -39,7 +39,7 @@ A brief description of what this project does.
 - Feature 3
 
 ### How to Run
-Instructions on how to run the project.
+Instructions on how to run the project,
 
 <!-- Repeat the above structure for all 10 projects -->
 
