@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image to text converter</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <style>
+     
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+        <div>
+            <input type="file" accept="image/*" id="imageInput">
+            <button onclick="extractText()">Extract Text</button>
+            <div id="output"> </div>
+        </div>
+    
+    </div>
+
+    <script src="index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        const extractText = () =>{
+            const imageInput = document.getElementById('imageInput');
+            const output = document.getElementById('output');
+
+            const imageFile = imageInput.files[0];
+            if(!imageFile){
+                output.innerText = 'Please Select an image file';
+                return;
+            }
+            
+            // text image convert into text only
+            Tesseract.recognize(
+                imageFile, 'eng'
+            ).then(({data}) => {
+                output.textContent = data.text;
+            }).catch((error) => {
+                console.error('Error', error);
+                output.textContent = error;
+            } )
+
+
+
+        }
+    </script>
+
+ 
+  </body>
+</html>
+

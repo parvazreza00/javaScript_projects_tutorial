@@ -40,7 +40,7 @@ btnStart.addEventListener('click', ()=>{
    if(!isRunning){
     timeLeft = 15;
     startTimer(timeLeft);
-    isRunning = 'true';
+    isRunning = true;
    }
 });
 btnEnd.addEventListener('click', ()=>{
