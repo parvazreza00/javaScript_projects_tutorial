@@ -13,6 +13,7 @@
     />
     <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
     <style>
+   
      
       
     </style>
@@ -20,9 +21,9 @@
   <body>
     <div class="container">
 
-        <div>
-            <input type="file" accept="image/*" id="imageInput">
-            <button onclick="extractText()">Extract Text</button>
+        <div class="mt-5" id="main">
+            <input type="file" class="" accept="image/*" id="imageInput">
+            <button class="btn btn-primary" id="extractText">Extract into Text</button>
             <div id="output"> </div>
         </div>
     
@@ -34,35 +35,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-
-      
-        const extractText = () =>{
-            const imageInput = document.getElementById('imageInput');
-            const output = document.getElementById('output');
-
-            const imageFile = imageInput.files[0];
-            if(!imageFile){
-                output.innerText = 'Please Select an image file';
-                return;
-            }
-            
-            // text image convert into text only
-            Tesseract.recognize(
-                imageFile, 'eng'
-            ).then(({data}) => {
-                output.textContent = data.text;
-            }).catch((error) => {
-                console.error('Error', error);
-                output.textContent = error;
-            } )
-
-        }
-
-
-    </script>
-
  
   </body>
 </html>
