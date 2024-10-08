@@ -13,3 +13,17 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.tdBorder{
+    border:1px solid dodgerblue;
+}
+
+.counterDiv{
+    background-color: blanchedalmond;
+    padding: 15px;
+    width:400px;
+    height:200px;
+    margin:auto;
+    margin-bottom: 10px;
+
+   }
