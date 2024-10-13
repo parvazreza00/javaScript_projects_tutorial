@@ -11,19 +11,21 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
-   
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   </head>
   <body>
     <div class="row text-center">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <h3 class="header text-uppercase text-warning bg-success p-3 ">Combined all Mini projects into one Project</h3>
-        </div>
+      <div class="col-md-12 col-lg-12 col-sm-12">
+        <h3 class="header text-uppercase text-warning bg-success p-3">
+          Combined all Mini projects into one Project
+        </h3>
+      </div>
     </div>
     <div class="container">
-
       <div class="row">
-        <div class="col-md-6 border border-top-0 border-start-0 border-primary border-2">
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-primary border-2"
+        >
           <div class="text-center">
             <h3>Increase Decrease Button</h3>
             <div class="counterDiv">
@@ -31,17 +33,77 @@
               <button class="btn btn-success" id="increase">Increase</button>
               <button class="btn btn-danger" id="decrease">Decrease</button>
             </div>
-
           </div>
         </div>
-        <div class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2">
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2"
+        >
           <div class="text-center">
             <h3>RGB color generate</h3>
+            <div id="colorBox"></div>
+            <p id="colorCode"></p>
+            <button id="generateBtn" class="btn btn-primary">
+              Generate Code
+            </button>
+            <button id="copyBtn" class="btn btn-secondary">
+              Generate Code
+            </button>
           </div>
         </div>
       </div>
-      
-    
+      <!-- first row end -->
+
+      <div class="row">
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-primary border-2"
+        >
+          <div class="text-center mb-3 breathingTimer">
+            <h3>Mindful Breathing Timer</h3>
+            <div id="timer" class="p-3">Breathing In</div>
+            <button id="startBtn" class="btn btn-primary">Start</button>
+            <button id="endBtn" class="btn btn-danger">End</button>
+          </div>
+        </div>
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2"
+        >
+          <div class="">
+            <h3 class="text-center">Convert image into text</h3>
+            <input type="file" accept="image/*" id="inputImage" />
+            <button class="btn btn-secondary" onclick="ExtractText()">
+              Text converter
+            </button>
+            <div id="showText"></div>
+          </div>
+        </div>
+      </div>
+      <!-- second row end -->
+
+      <div class="row">
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-primary border-2"
+        >
+          <div class="mb-5 ToDoList">
+            <h3 class="text-center">To-Do List</h3>
+            <input type="text" id="taskInput" />
+            <button id="addTask" class="btn btn-primary btn-sm">Add</button>
+            <button id="checkedRemove" class="btn btn-danger btn-sm">
+              Checked Removed
+            </button>
+            <ul id="taskList">
+              <div style="display: none;"> <input type="checkbox" id="checkall"> Checked All</div>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2"
+        >
+          <div class="">
+            <h3 class="text-center">Coming soon a new Mini project</h3>
+          </div>
+        </div>
+      </div>
+      <!-- third row end -->
     </div>
 
     <script src="index.js"></script>
@@ -50,7 +112,5 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
- 
   </body>
 </html>
-

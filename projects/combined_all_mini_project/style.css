@@ -27,3 +27,16 @@ body {
     margin-bottom: 10px;
 
    }
+#colorBox{
+    width:100px;
+    height: 100px;
+    border:1px solid black;
+    margin:auto;
+}   
+
+.breathingTimer{
+    height: 250px;
+}
+.ToDoList{
+    min-height: 250px;  
+}
