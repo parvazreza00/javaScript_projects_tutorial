@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <div class="container">
+       
+        <div>
+            <h1>Weather App</h1>
+            <input type="text" id="city" placeholder="Country/City name...">
+            <button onclick="getWeather()">Weather Info</button>
+            <div id="weatherinfo"></div>
+        </div>
+
+      
+    
+    </div>
+
+    <script src="index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        const getWeather = () =>{
+          const weatherinfo = document.getElementById('weatherinfo');
+          weatherinfo.style.marginTop = "10px";
+          weatherinfo.style.padding = "10px";
+          weatherinfo.style.width = "250px";
+          weatherinfo.style.height = "400px";
+          weatherinfo.style.background = "linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)";
+
+
+          const city = document.getElementById('city').value;
+          const apiKey = "a2121d797ac86c8832c578704c8c7107";
+         
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+            fetch(apiUrl)
+            .then(res => {
+
+              if(!res.ok){
+                throw new Error('City or Country no found');
+              }
+              return res.json();
+
+             })
+            .then(data => {
+              console.log(data);
+              const weatherinfo = document.getElementById('weatherinfo');
+
+              const description = data.weather[0].description;
+              const temperature = data.main.temp;
+              const humidity = data.main.humidity;
+              const speed = data.wind.speed;
+
+              weatherinfo.innerHTML = `
+              <p>City/Country : <b>${city}</b></p>
+              <p>Description : ${description}</p>
+              <p>Temperature : ${temperature} &deg;C</p>
+              <p>Humidity : ${humidity}%</p>
+              <p>Wind speed : ${speed} m/s</p>
+              `;
+
+            })
+            .catch(error => {
+              console.log('Opps, Sorry!', error);
+              weatherinfo.innerHTML = '<p class="text-danger">City or Country not found.</p>';
+            })
+        }
+    </script>
+
+    
+  </body>
+</html>
