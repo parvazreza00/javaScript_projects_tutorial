@@ -219,3 +219,47 @@ checkAll.addEventListener('change', () => {
 });
 
 
+// weather app-..................................................
+const weatherBtn = document.getElementById('getWeather');
+weatherBtn.addEventListener('click', ()=>{
+    const weatherInfo = document.getElementById('weatherInfo');
+    weatherInfo.style.marginTop = "10px";
+    weatherInfo.style.padding = "10px";
+    weatherInfo.style.width = "250px";
+    weatherInfo.style.margin = "auto";
+    weatherInfo.style.background = "linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)";
+
+    const city = document.getElementById('city').value;
+    const apiKey = "a2121d797ac86c8832c578704c8c7107";
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(apiUrl)
+    .then(res => {
+        if(!res.ok){
+            throw new Error('No country or city found!');
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log(data);
+
+        const des = data.weather[0].description;
+        const windSpeed = data.wind.speed;
+        const humidity = data.main.humidity;
+        const temperature = data.main.temperature;
+        
+        weatherInfo.innerHTML = `
+            <p>Country/City Name : <span style="text-transform: capitalize;">${city}</span> </p>
+            <p>Description : ${des}</p>
+            <p>Temperature : ${temperature}</p>
+            <p>Humidity : ${humidity}</p>
+            <p>Wind Speed : ${windSpeed}</p>
+        `;
+    }).catch(error => {
+        console.log('Opps, Sorry!',error);
+        weatherInfo.innerHTML = `<p class="text-white">No country or city found!</p>`
+    })
+
+
+})
+
