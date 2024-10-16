@@ -11,24 +11,19 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <style>
-     
-    </style>
+    <style></style>
   </head>
   <body>
     <div class="container">
-       
-        <div>
-            <h1>Random Password Generator</h1>
-            <label for="passwordLength">Password Length : </label>
-            <input type="number" id="passwordLength" value="8" min="8">
-            <button id="generatePass" class="btn btn-primary btn-sm">Generate Password</button>
-            <p id="passArea"></p>
-           
-        </div>
-
-      
-    
+      <div>
+        <h1>Random Password Generator</h1>
+        <label for="passwordLength">Password Length : </label>
+        <input type="number" id="passwordLength" value="8" min="8" />
+        <button id="generatePass" class="btn btn-primary btn-sm">
+          Generate Password
+        </button>
+        <p id="passArea"></p>
+      </div>
     </div>
 
     <script src="index.js"></script>
@@ -39,28 +34,24 @@
     ></script>
 
     <script>
-        const generatePassword = document.getElementById('generatePass');
-        generatePassword.addEventListener('click', ()=>{
-            const passArea = document.getElementById('passArea');
-            const inputLength = document.getElementById('passwordLength').value;
+      const generatePassword = document.getElementById("generatePass");
+      generatePassword.addEventListener("click", () => {
+        const passArea = document.getElementById("passArea");
+        const inputLength = document.getElementById("passwordLength").value;
 
-            const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%&^*()_-+=/?<>";
+        const charset =
+          "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%&^*()_-+=/?<>";
 
-            let randomPassword = '';
-            for(let i = 0; i < inputLength; i++){
-                const randomIndex = Math.round(Math.random() * charset.length);
-                
-                randomPassword += charset[randomIndex];
-                // console.log(pass);
-            }
+        let randomPassword = "";
+        for (let i = 0; i < inputLength; i++) {
+          const randomIndex = Math.round(Math.random() * charset.length);
 
+          randomPassword += charset[randomIndex];
+          // console.log(pass);
+        }
 
-            passArea.innerText = "Passowrd: " + randomPassword;
-
-        });
+        passArea.innerText = "Passowrd: " + randomPassword;
+      });
     </script>
-
-  
-    
   </body>
 </html>

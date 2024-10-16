@@ -47,7 +47,6 @@ function RGBColorGenerator() {
     const b = Math.floor(Math.random() * 255);
     return `rgb(${r}, ${g}, ${b})`;
 }
-console.log(RGBColorGenerator());
 
 function updateColor() {
     const color = RGBColorGenerator();
@@ -157,34 +156,34 @@ const checkAllContainer = document.querySelector('.ToDoList div');
 const checkAll = document.getElementById('checkall');
 let taskCount = 0;
 
-addTask.addEventListener('click', ()=>{
+addTask.addEventListener('click', () => {
     const inputValue = taskInput.value;
-    
-    if(inputValue){
+
+    if (inputValue) {
         const taskList = document.getElementById('taskList');
         const li = document.createElement('li');
         li.style.marginTop = '8px';
-        li.style.listStyleType = 'none'; 
-        li.innerHTML =`<input type="checkbox" style="width: 15px;height: 15px;margin-right:5px;">` + inputValue + `<button class="ms-3 btn btn-danger btn-sm" onclick="removeLi(this)">Delete</button>`;
+        li.style.listStyleType = 'none';
+        li.innerHTML = `<input type="checkbox" style="width: 15px;height: 15px;margin-right:5px;">` + inputValue + `<button class="ms-3 btn btn-danger btn-sm" onclick="removeLi(this)">Delete</button>`;
         taskList.appendChild(li);
         taskInput.value = "";
 
         taskCount++;
-        
+
         if (taskCount === 1) {
             checkAllContainer.style.display = 'block';
         }
-    }else{
+    } else {
         alert("Please insert your task!");
     }
-    
+
 });
 
-function removeLi(btn){
-   const li = btn.parentNode;
-   li.parentNode.removeChild(li);
+function removeLi(btn) {
+    const li = btn.parentNode;
+    li.parentNode.removeChild(li);
 
-   taskCount--;
+    taskCount--;
 
     if (taskCount === 0) {
         checkAllContainer.style.display = 'none';
@@ -192,19 +191,19 @@ function removeLi(btn){
     }
 }
 
-checkedRemove.addEventListener('click', ()=>{
+checkedRemove.addEventListener('click', () => {
     const allChecked = document.querySelectorAll("input[type='checkbox']:checked");
-    allChecked.forEach((allItem)=> {
+    allChecked.forEach((allItem) => {
         const li = allItem.parentNode;
         li.parentNode.removeChild(li);
         taskCount--;
     });
 
-      if (taskCount === 0) {
+    if (taskCount === 0) {
         checkAllContainer.style.display = 'none';
         checkAll.checked = false;
     }
-  
+
 
 });
 
@@ -221,7 +220,7 @@ checkAll.addEventListener('change', () => {
 
 // weather app-..................................................
 const weatherBtn = document.getElementById('getWeather');
-weatherBtn.addEventListener('click', ()=>{
+weatherBtn.addEventListener('click', () => {
     const weatherInfo = document.getElementById('weatherInfo');
     weatherInfo.style.marginTop = "10px";
     weatherInfo.style.padding = "10px";
@@ -234,32 +233,48 @@ weatherBtn.addEventListener('click', ()=>{
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(apiUrl)
-    .then(res => {
-        if(!res.ok){
-            throw new Error('No country or city found!');
-        }
-        return res.json();
-    })
-    .then(data => {
-        console.log(data);
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('No country or city found!');
+            }
+            return res.json();
+        })
+        .then(data => {
 
-        const des = data.weather[0].description;
-        const windSpeed = data.wind.speed;
-        const humidity = data.main.humidity;
-        const temperature = data.main.temp;
-        
-        weatherInfo.innerHTML = `
+            const des = data.weather[0].description;
+            const windSpeed = data.wind.speed;
+            const humidity = data.main.humidity;
+            const temperature = data.main.temp;
+
+            weatherInfo.innerHTML = `
             <p>Country/City Name : <span style="text-transform: capitalize;">${city}</span> </p>
             <p>Description : ${des}</p>
             <p>Temperature : ${temperature} &deg;C</p>
             <p>Humidity : ${humidity}%</p>
             <p>Wind Speed : ${windSpeed} m/s</p>
         `;
-    }).catch(error => {
-        console.log('Opps, Sorry!',error);
-        weatherInfo.innerHTML = `<p class="text-white">No country or city found!</p>`
-    })
+        }).catch(error => {
+            console.log('Opps, Sorry!', error);
+            weatherInfo.innerHTML = `<p class="text-white">No country or city found!</p>`
+        })
 
 
 })
 
+//password generator.......................................................
+const generatePassBtn = document.getElementById('generatePassword');
+generatePassBtn.addEventListener('click', () => {
+    const showPassword = document.getElementById('showPassword');
+    const inputLength = document.getElementById('passwordLength').value;
+
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~!@#$%^&()_-+=/{}[]?<>";
+
+    let randomPassword = '';
+    for(let i = 0; i < inputLength; i++){
+        const passIndex = Math.round(Math.random() * charset.length);
+        randomPassword += charset[passIndex];
+    }
+
+    showPassword.innerText = "Password : " + randomPassword;
+
+});
