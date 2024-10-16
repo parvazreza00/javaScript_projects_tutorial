@@ -106,7 +106,7 @@ const startTimer = (duration) => {
 
 startBtn.addEventListener('click', () => {
     if (!isRunning) {
-        leftTime = 20;
+        leftTime = 90;
         startTimer(leftTime);
         isRunning = true;
     }
@@ -246,14 +246,14 @@ weatherBtn.addEventListener('click', ()=>{
         const des = data.weather[0].description;
         const windSpeed = data.wind.speed;
         const humidity = data.main.humidity;
-        const temperature = data.main.temperature;
+        const temperature = data.main.temp;
         
         weatherInfo.innerHTML = `
             <p>Country/City Name : <span style="text-transform: capitalize;">${city}</span> </p>
             <p>Description : ${des}</p>
-            <p>Temperature : ${temperature}</p>
-            <p>Humidity : ${humidity}</p>
-            <p>Wind Speed : ${windSpeed}</p>
+            <p>Temperature : ${temperature} &deg;C</p>
+            <p>Humidity : ${humidity}%</p>
+            <p>Wind Speed : ${windSpeed} m/s</p>
         `;
     }).catch(error => {
         console.log('Opps, Sorry!',error);
