@@ -278,3 +278,25 @@ generatePassBtn.addEventListener('click', () => {
     showPassword.innerText = "Password : " + randomPassword;
 
 });
+
+// tips calculator.......................................................
+const tipsCalculateBtn = document.getElementById('tipsCalculate');
+tipsCalculateBtn.addEventListener('click', ()=>{
+    const billAmountValue = parseFloat(document.getElementById('billAmount').value);
+    const tipsPercentValue = parseFloat(document.getElementById('tipsPercentage').value);
+
+    if(isNaN(billAmountValue) || isNaN(tipsPercentValue)){
+        document.getElementById('result').innerHTML = '<p class="text-danger">Please Enter Valid Number!</p>';
+        return;
+    }
+
+   const tipsPerAmount = (tipsPercentValue*billAmountValue)/100;
+   const totalBill = billAmountValue + tipsPerAmount;
+
+   document.getElementById('result').innerHTML = `
+        <p> Tips Amount : $${tipsPerAmount.toFixed(2)}</p>
+        <p> Total Amount : $${totalBill.toFixed(2)}</p>
+   `;
+//    console.log(totalBill);
+
+});
