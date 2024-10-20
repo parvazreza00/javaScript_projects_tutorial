@@ -85,13 +85,15 @@
         >
           <div class="mb-5 ToDoList">
             <h3 class="text-center">To-Do List</h3>
-            <input type="text" id="taskInput" placeholder="Task Name"/>
+            <input type="text" id="taskInput" placeholder="Task Name" />
             <button id="addTask" class="btn btn-primary btn-sm">Add</button>
             <button id="checkedRemove" class="btn btn-danger btn-sm">
               Checked Removed
             </button>
             <ul id="taskList">
-              <div style="display: none;"> <input type="checkbox" id="checkall"> Checked All</div>
+              <div style="display: none">
+                <input type="checkbox" id="checkall" /> Checked All
+              </div>
             </ul>
           </div>
         </div>
@@ -100,9 +102,11 @@
         >
           <div class="">
             <h3 class="text-center">Weather App</h3>
-            <input type="text" id="city" placeholder="City/Country">
-            <button class="btn btn-info btn-sm" id="getWeather">Weather Info</button>
-            <div id="weatherInfo" class='text-center mb-2 mt-2'></div>
+            <input type="text" id="city" placeholder="City/Country" />
+            <button class="btn btn-info btn-sm" id="getWeather">
+              Weather Info
+            </button>
+            <div id="weatherInfo" class="text-center mb-2 mt-2"></div>
           </div>
         </div>
       </div>
@@ -115,10 +119,11 @@
           <div class="mb-5 ToDoList">
             <h3 class="text-center">Random Password Generator</h3>
             <label for="passwordLength">Password Length : </label>
-            <input type="number" id="passwordLength" value="8" min="8"/>
-            <button id="generatePassword" class="btn btn-primary btn-sm">Password Generate</button>
+            <input type="number" id="passwordLength" value="8" min="8" />
+            <button id="generatePassword" class="btn btn-primary btn-sm">
+              Password Generate
+            </button>
             <p id="showPassword"></p>
-           
           </div>
         </div>
         <div
@@ -128,22 +133,69 @@
             <h3 class="text-center">Tips Calculate</h3>
             <div class="row">
               <div class="col-md-6">
-                <label for="billAmount">Bill amount ($)</label><br>
-                <input type="number" id="billAmount" placeholder="Bill amount">
+                <label for="billAmount">Bill amount ($)</label><br />
+                <input
+                  type="number"
+                  id="billAmount"
+                  placeholder="Bill amount"
+                />
               </div>
               <div class="col-md-6">
-                <label for="tipsPercentage">Tips Percentage (%) </label><br>
-                <input type="number" id="tipsPercentage" placeholder="Tips Percentage"><br>
-                <button id="tipsCalculate" class="mt-2 btn btn-primary btn-sm">Tips Calculate</button>   
+                <label for="tipsPercentage">Tips Percentage (%) </label><br />
+                <input
+                  type="number"
+                  id="tipsPercentage"
+                  placeholder="Tips Percentage"
+                /><br />
+                <button id="tipsCalculate" class="mt-2 btn btn-primary btn-sm">
+                  Tips Calculate
+                </button>
               </div>
 
-              <div class="col-md-12" id="result">               
+              <div class="col-md-12" id="result"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- fourth row end -->
+
+      <div class="row">
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-primary border-2"
+        >
+          <div class="">
+            <h3 class="text-center">Image Slider</h3>
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <div class="slider m-auto">
+                  <div class="slides" id="allSlide">
+                    <img src="images/1.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/2.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/3.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/4.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/5.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/6.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/7.jpg" alt="IMAGE" class="slide" />
+                    <img src="images/8.jpg" alt="IMAGE" class="slide" />
+                  </div>
+                  <div class="controls">
+                    <button class="btn btn-secondary" onclick="prevSlide()">
+                      &#10094;
+                    </button>
+                    <button class="btn btn-secondary" onclick="nextSlide()">
+                      &#10095;
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-           
-           
-          
-            
+          </div>
+        </div>
+        <div
+          class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2"
+        >
+          <div class="">
+            <h3 class="text-center">New project coming soon</h3>
           </div>
         </div>
       </div>

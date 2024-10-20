@@ -40,3 +40,30 @@ body {
 .ToDoList{
     min-height: 250px;  
 }
+
+.slider{
+    position: relative;
+    width:300px;
+    height:200px;
+    overflow: hidden;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+.slides{    
+    transition: transform 0.5s  ease-in-out ;
+    display: flex;
+  }
+.slide{
+    min-width:100%;
+    height:100%;
+    object-fit: contain;    
+}
+.controls{
+    position: absolute;
+    top:50%;
+    color: #ccc;
+    width:100%;
+    display:flex;
+    transform:translateY(-50%);
+    justify-content:space-between;
+}

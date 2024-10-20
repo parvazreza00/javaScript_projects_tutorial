@@ -300,3 +300,32 @@ tipsCalculateBtn.addEventListener('click', ()=>{
 //    console.log(totalBill);
 
 });
+
+// slider image project ................................
+
+let slideIndex = 0;
+
+const slideShow = (index)=>{
+    const allSlide = document.getElementById('allSlide');
+
+    const totalSlides = allSlide.children.length;
+    
+    if(index >= totalSlides){
+        slideIndex = 0;
+    }else if(index < 0){
+        slideIndex = totalSlides - 1;
+    }else{
+        slideIndex = index;
+    }
+
+    allSlide.style.transform = `translateX(${-slideIndex * 100 }%)`;
+
+}
+
+const nextSlide = ()=>{
+    slideShow(slideIndex + 1);
+}
+
+const prevSlide = ()=>{
+    slideShow(slideIndex - 1);
+}
