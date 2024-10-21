@@ -194,8 +194,43 @@
         <div
           class="col-md-6 border border-top-0 border-start-0 border-end-0 border-primary border-2"
         >
-          <div class="">
-            <h3 class="text-center">New project coming soon</h3>
+          <div class="mb-3">
+            <h3 class="text-center">BMI Calculator</h3>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card shadow" style="width: 18rem">
+                  <div class="card-body">
+                    <div class="">
+                      <label for="bmiage" class="form-label">Age</label>
+                      <input type="number" class="form-control" id="bmiage" placeholder="Enter age"/>
+                    </div>
+                    <div class="">
+                      <label for="bmiweight" class="form-label">Weight(kg)</label>
+                      <input type="number" class="form-control" id="bmiweight" placeholder="Enter Weight"/>
+                    </div>
+                    <div class="">
+                      <label for="bmiheight" class="form-label">Height(cm)</label>
+                      <input type="number" class="form-control" id="bmiheight" placeholder="Enter Height"/>
+                    </div>
+                    <div class="py-3 text-center">
+                      <button type="submit" class="btn btn-primary" id="CalculateBMI">
+                        Calculate BMI
+                      </button>
+                      <button id="clearButton" class="btn btn-danger">Clear</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center"><u>BMI RESULT</u></h4>
+                <div id="bmiresult" class="" ></div>
+              </div>
+            </div>
+
+
+
           </div>
         </div>
       </div>

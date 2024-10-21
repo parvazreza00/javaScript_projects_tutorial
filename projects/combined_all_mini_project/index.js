@@ -329,3 +329,61 @@ const nextSlide = ()=>{
 const prevSlide = ()=>{
     slideShow(slideIndex - 1);
 }
+
+// bmi claculator............................................................
+
+const BMIButton = document.getElementById('CalculateBMI');
+const BMIresult = document.getElementById('bmiresult');
+
+BMIButton.addEventListener('click', ()=>{
+    const bmiage = parseInt(document.getElementById('bmiage').value);
+    const bmiweight = document.getElementById('bmiweight').value;
+    const bmiheight = document.getElementById('bmiheight').value / 100;
+
+    if(isNaN(bmiage) || bmiage <= 0){
+        BMIresult.innerHTML = `<p class="text-danger">Please Enter Valid Age</p>`
+        return;
+    }
+    if(isNaN(bmiheight) || bmiweight <= 0 || isNaN(bmiheight) || bmiheight === 0){
+        BMIresult.innerHTML = `<p class="text-danger">Please Enter Valid Weight and Height</p>`
+        return;
+    }
+
+
+    const BMICategory = (bmi) => {
+        if (bmi < 16) {
+          return "Severely Underweight";
+        } else if (bmi >= 16.0 && bmi <= 18.4) {
+          return "Underweight";
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          return "Normal";
+        } else if (bmi >= 25.0 && bmi <= 29.9) {
+          return "Overweight";
+        } else if (bmi >= 30.0 && bmi <= 34.9) {
+          return "Moderately Obese";
+        } else if (bmi >= 35.0 && bmi <= 39.9) {
+          return "Severely Obese";
+        } else {
+          return "Morbidly Obese";
+        }
+      };
+
+    const bmi = bmiweight / (bmiheight * bmiheight);
+    const getBMIValue = BMICategory(bmi);
+
+    BMIresult.innerHTML = `
+        <p>Your Age : ${bmiage} years</p>
+        <p>Your BMI : ${bmi.toFixed(1)} kg/cm<sup>2</sup></p>
+        <p>Your Are : ${getBMIValue}</p>
+    `;
+
+    document.getElementById("clearButton").addEventListener("click", function() {
+        BMIresult.innerHTML = ''; 
+        document.getElementById('bmiage').value = '';
+        document.getElementById('bmiweight').value = '';
+        document.getElementById('bmiheight').value = '';
+    });
+
+
+
+})
