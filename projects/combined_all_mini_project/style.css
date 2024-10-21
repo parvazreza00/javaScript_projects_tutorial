@@ -67,3 +67,9 @@ body {
     transform:translateY(-50%);
     justify-content:space-between;
 }
+
+#recipieResult{
+    height:400px ;
+    border: 1px solid black;
+    overflow-y: scroll;
+}

@@ -384,6 +384,33 @@ BMIButton.addEventListener('click', ()=>{
         document.getElementById('bmiheight').value = '';
     });
 
-
-
 })
+
+// recipie app................................
+const recipieResultDiv = document.getElementById('recipieResult');
+const recipiBtn = document.getElementById('recipiBtn');
+recipiBtn.addEventListener('click', ()=>{
+    recipieInputValue = document.getElementById('inputRecipie').value;
+    // console.log(recipieInputValue);
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipieInputValue}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data.meals);
+        const recipies = data.meals;
+        if(recipies){
+            recipies.forEach((recipie) => {
+                const recipieDiv = document.createElement('div');
+                recipieDiv.innerHTML = `
+                    <h1>${recipie.strMeal}</h1>
+                    <img src="${recipie.strMealThumb}" style="width:100px;height:100px;" alt="IMAGE"/>
+                    <p>${recipie.strInstructions}</p>
+                `;
+                recipieResultDiv.appendChild(recipieDiv);
+            });
+        }
+        else{
+            recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
+        }
+    });
+});
