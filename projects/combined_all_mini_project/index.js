@@ -390,20 +390,30 @@ BMIButton.addEventListener("click", () => {
 // recipie app................................
 const recipieResultDiv = document.getElementById("recipieResult");
 const recipiBtn = document.getElementById("recipiBtn");
+
 recipiBtn.addEventListener("click", () => {
+  recipieResultDiv.style.height = '400px';
+  recipieResultDiv.style.overflowY = 'scroll';
+  recipieResultDiv.style.border = '1px solid #ccc';
   recipieInputValue = document.getElementById("inputRecipie").value;
   // console.log(recipieInputValue);
 
   fetch(
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipieInputValue}`
   )
-    .then((res) => res.json())
+    .then((res) => {
+      if(!res.ok){
+        throw new Error("Recipe Name Not Found!")
+      }
+      return res.json();
+    })
     .then((data) => {
       console.log(data.meals);
       const recipies = data.meals;
       if (recipies) {
         recipies.forEach((recipie) => {
           const recipieDiv = document.createElement("div");
+       
           recipieDiv.innerHTML = `
                     <h1>${recipie.strMeal}</h1>
                     <div class="py-1">
@@ -426,5 +436,64 @@ recipiBtn.addEventListener("click", () => {
       } else {
         recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
       }
-    });
+    })
+  .catch((error) => {
+    console.log("Opps, Sorry!", error);
+    recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
+  });
+});
+
+// typing speed test..................................................
+
+document.addEventListener('DOMContentLoaded', ()=>{
+
+  const quotes = [
+            "A journey of a thousand miles begins with a single step.",
+            "To be or not to be, that is the question.",
+            "All that glitters is not gold.",
+            "The quick brown fox jumps over the lazy dog.",
+            "The only thing we have to fear is fear itself.",
+            "Little learning is a dangerous things.",
+          ];
+
+        const displayQuote = document.getElementById('quote');  
+        const inputBox = document.getElementById('inputBox');  
+        const typeBtn = document.getElementById('typeBtn');  
+        const resultDiv = document.getElementById('resultDiv');  
+
+        let currentQuate;
+        let startTime;
+
+        typeBtn.addEventListener('click', startTypeBtn);
+        inputBox.addEventListener('input', checkInput);
+
+        function startTypeBtn(){
+
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          currentQuate = quotes[randomIndex];
+          displayQuote.textContent = currentQuate;
+          inputBox.removeAttribute('disabled');
+          inputBox.focus();
+
+          startTime = new Date().getTime();
+
+          inputBox.value = '';
+          resultDiv.textContent = '';
+
+        }
+
+        function checkInput(){
+          const typedText = inputBox.value;
+          if(typedText === currentQuate){
+            const endTime = new Date().getTime();
+            const timeTaken = (endTime - startTime) / 1000;
+            const wordsPerMin = (typedText.split(' ').length) / timeTaken * 60;
+            inputBox.setAttribute('disabled', true);
+
+            resultDiv.textContent = `You typing speed ${parseInt(wordsPerMin)} words per minute.`;
+
+          }
+        }
+
+
 });
