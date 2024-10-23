@@ -398,49 +398,55 @@ recipiBtn.addEventListener("click", () => {
   recipieInputValue = document.getElementById("inputRecipie").value;
   // console.log(recipieInputValue);
 
-  fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipieInputValue}`
-  )
-    .then((res) => {
-      if(!res.ok){
-        throw new Error("Recipe Name Not Found!")
-      }
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data.meals);
-      const recipies = data.meals;
-      if (recipies) {
-        recipies.forEach((recipie) => {
-          const recipieDiv = document.createElement("div");
-       
-          recipieDiv.innerHTML = `
-                    <h1>${recipie.strMeal}</h1>
-                    <div class="py-1">
-                             <span>Country: <b>${recipie.strArea}</b></span>|
-                            <span>Category: <b>${recipie.strCategory}</b></span>
-                        </div>
-                    <img src="${recipie.strMealThumb}" style="width:300px;height:200px;" class="img-thumbnail rounded mx-auto d-block" alt="IMAGE"/>
-                    <div class="py-1">
-                        <a href="${recipie.strSource}" target="_blank">Source</a>  |
-                        <a href="${recipie.strYoutube}" target="_blank">Youtube </a> 
-                    </div>
-                   <div style="width:95%; margin:auto;">
-                        <p class="text-start">Recipie Tags : ${recipie.strTags}</p>    
-                        <p style="text-align: justify">${recipie.strInstructions}</p>
-                   </div>
-                `;
-          recipieResultDiv.appendChild(recipieDiv);
-          document.getElementById("inputRecipie").value = '';
-        });
-      } else {
-        recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
-      }
-    })
-  .catch((error) => {
-    console.log("Opps, Sorry!", error);
-    recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
-  });
+  if(recipieInputValue != ''){
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${recipieInputValue}`
+    )
+      .then((res) => {
+        if(!res.ok){
+          throw new Error("Recipe Name Not Found!")
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.meals);
+        const recipies = data.meals;
+        if (recipies) {
+          recipies.forEach((recipie) => {
+            const recipieDiv = document.createElement("div");
+         
+            recipieDiv.innerHTML = `
+                      <h1>${recipie.strMeal}</h1>
+                      <div class="py-1">
+                               <span>Country: <b>${recipie.strArea}</b></span>|
+                              <span>Category: <b>${recipie.strCategory}</b></span>
+                          </div>
+                      <img src="${recipie.strMealThumb}" style="width:300px;height:200px;" class="img-thumbnail rounded mx-auto d-block" alt="IMAGE"/>
+                      <div class="py-1">
+                          <a href="${recipie.strSource}" target="_blank">Source</a>  |
+                          <a href="${recipie.strYoutube}" target="_blank">Youtube </a> 
+                      </div>
+                     <div style="width:95%; margin:auto;">
+                          <p class="text-start">Recipie Tags : ${recipie.strTags}</p>    
+                          <p style="text-align: justify">${recipie.strInstructions}</p>
+                     </div>
+                  `;
+            recipieResultDiv.appendChild(recipieDiv);
+            document.getElementById("inputRecipie").value = '';
+          });
+        } else {
+          recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
+        }
+      })
+    .catch((error) => {
+      console.log("Opps, Sorry!", error);
+      recipieResultDiv.innerHTML = `<p class="text-danger">Recipe Name Not Found</p>`;
+    });
+  }else{
+    recipieResultDiv.innerHTML = `<p class="text-danger">Please Enter Recipe Name</p>`;
+  }
+
+  
 });
 
 // typing speed test..................................................
