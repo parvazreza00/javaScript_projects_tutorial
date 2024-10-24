@@ -551,3 +551,51 @@ function digitalClock(){
 setInterval(digitalClock, 1000);
 digitalClock();
 
+// Photo API integration .....................................
+
+const apiPhotoBtn = document.getElementById('apiPhoto');
+
+apiPhotoBtn.addEventListener('click', () => {
+
+  const imgContainer = document.getElementById('imgContainer');
+  imgContainer.style.height = '400px';
+  imgContainer.style.overflowY = 'scroll';
+  imgContainer.style.border = '1px solid #ccc';
+
+  const apiURL = "https://picsum.photos/v2/list";
+  fetch(apiURL)
+  .then(res => res.json())
+  .then((items) => {
+    // console.log(items);
+    imgContainer.innerHTML = '';
+
+    items.forEach((item)=>{
+      const newDiv = document.createElement('div');
+      newDiv.classList.add('text-center', 'mb-3');
+
+      const newImg = document.createElement('img')
+      newImg.classList.add('img-thumbnail','rounded', 'img-fluid');
+      newImg.alt = 'Random Image'; 
+      newImg.style.width = '400px';  // Set width for better display
+      newImg.style.height = 'auto';
+      newImg.src = item.download_url;
+      newDiv.appendChild(newImg);
+
+      const newAuthor = document.createElement('p');
+      newAuthor.classList.add('fw-bold');
+      newAuthor.textContent = 'Author : ' + item.author;
+      newDiv.appendChild(newAuthor);
+
+      imgContainer.appendChild(newDiv);
+
+
+    })
+
+  })
+  .catch(error => {
+    console.log(error);
+    imgContainer.innerHTML = `<p class="text-danger">NO Photo data found!</p>`;
+  })
+
+});
+
