@@ -500,6 +500,54 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
           }
         }
-
-
 });
+
+// digital clock........................................
+
+function digitalClock(){
+  const digitClclock1 = document.getElementById('clock1');
+  const digitClclock2 = document.getElementById('clock2');
+
+  const alldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const allmonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+
+  let ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12; // Convert 24-hour format to 12-hour format
+  hours = hours ? hours : 12;// the hour '0' should be '12'
+
+  hours = (hours < 10 ? '0' : '') + hours;
+  minutes = (minutes < 10 ? '0' : '') + minutes;
+  seconds = (seconds < 10 ? '0' : '') + seconds;
+
+  let date = now.getDate();
+  let dayOfWeek = alldays[now.getDay()];
+  let months = now.getMonth() + 1;
+  let monthOfYear = allmonths[now.getMonth()];
+  let fullYear = now.getFullYear();
+
+  digitClclock1.innerHTML = `<h3 style="margin-bottom:0px;">${hours}:${minutes}:${seconds} ${ampm}</h3>
+        <h5 style="margin-top:0px;">${date}-${months}-${fullYear}</h5>
+        <hr>
+        `;
+
+  digitClclock2.innerHTML =  `
+            <div class="mb-3 fw-bolder">
+                <span class="py-3 px-3 text-white bg-primary rounded">${hours}</span>  
+                <span class="py-3 px-3 text-white bg-secondary rounded">${minutes}</span>  
+                <span class="py-3 px-3 text-white bg-danger rounded">${seconds}</span> 
+                <span class="py-3 px-3 text-white bg-success rounded">${ampm}</span>
+            </div>                
+            <p>${dayOfWeek}, ${monthOfYear} ${date}, ${fullYear}</p>
+            `;
+
+}
+
+setInterval(digitalClock, 1000);
+digitalClock();
+
