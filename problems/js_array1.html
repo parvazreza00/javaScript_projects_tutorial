@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+
+    <script>
+    const fruits = ['PineApple','Apple','Guava','Banana','Malta'];
+    document.write(fruits+"<br>");
+    document.write(fruits[3] + "<br>");
+    var i ;
+    for(i=0;i<fruits.length; i++){
+        document.write(i+":" +fruits[i]);
+        document.write("<br>");
+    }
+
+    document.write("<br>");
+
+    for(var item in fruits){
+        document.write(item +":"+fruits[item] +"<br>");
+    }
+            
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+
+    <script>
+       var mypc = {
+        brand:'Gigabite',
+        screen: '15.00',
+        isLaptop:false,
+        ram:"8GB",
+        disk:"500GB",
+        isSSD: true,
+        processor:"Gigabitye",
+       }
+       document.write(mypc.processor);
+       document.write("<br>");
+       for(var item in mypc){
+        document.write(item+":"+mypc[item] + "<br>");
+       }
+
+       document.write("<br>");
+
+       const person = {
+        name: "Parvaz",
+        age: 28,
+        profession: "Engineer",
+        country: "Bangladesh",
+       }
+       document.write(person.name);
+       document.write('<br>');
+       for(var item in person){
+        document.write(item + ":" +person[item]+"<br>");
+       }
+       
+   
+
+        
+        
+    </script>
+    
+</body>
+</html>
