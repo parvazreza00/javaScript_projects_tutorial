@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+
+
+    <script>
+        // const d = new Date();
+        // document.write(d.getTime());
+
+        // Calculate milliseconds in a year
+const minute = 1000 * 60;
+const hour = minute * 60;
+const day = hour * 24;
+const year = day * 365;
+// document.write(year);
+
+// Divide Time with a year
+const d = new Date();
+let years = Math.round(Date.now() / year);
+document.write(years);
+
+    </script>
+    
+</body>
+</html>

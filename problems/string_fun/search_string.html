@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+
+    <script>
+     var str= "Bangladesh vs Malyshia";
+    //  for(var i in str){
+    //     document.write(i + "->" + str[i] + "<br>");
+    //  }
+
+   const index = str.indexOf("vs");
+   document.write(index);
+   document.write("<br>");
+   const lastindex = str.lastIndexOf("Malyshia");
+   document.write(lastindex);
+   document.write("<br>");
+   const search = str.search(/Bangladesh/);
+   document.write(search);
+   document.write("<br>");
+   const match = str.match("ladesh");
+   document.write(match);
+   document.write("<br>");
+   const allmatch = str.matchAll("a");
+  document.write(Array.from(allmatch));
+  document.write(Array.from("ABCDEFG"));
+     
+
+
+    </script>
+    
+</body>
+</html>
