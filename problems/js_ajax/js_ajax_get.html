@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM</title>
+</head>
+<body>
+
+    <button onclick="getProduct()">getProduct</button>
+    
+
+    <script>
+       function getProduct(){
+        const URL = "https://crud.teamrabbil.com/api/v1/ReadProduct";
+        const configuration = {method:"GET"};
+
+        fetch(URL, configuration)
+        .then(response=> response.json())
+        .then(result=> console.log(result))
+        .then(err=>console.log(err));
+       }
+    </script>
+</body>
+</html>
