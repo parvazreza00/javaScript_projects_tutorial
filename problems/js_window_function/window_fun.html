@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+    
+    <button onclick="objAlert()">CLick</button>
+    <button onclick="objConfirm()">DELETE OR NOT</button>
+    <button onclick="objPrompt()">GIVE INPUT</button>
+    <button onclick="objOpen()">OPEN</button>
+    <button onclick="objClose()">CLOSE</button>
+    <script>
+         let myWindow;
+
+        function objAlert(){
+            alert("site is under constructed");
+        }
+
+        function objConfirm(){
+            var result = confirm("Do you want to DELETE");
+            // document.write(result);
+        }
+
+        function objPrompt(){
+            var result = prompt("Write your name");
+            // document.write(result);
+        }
+
+        function objOpen(){
+            open();
+        }
+
+        function objClose() {
+        // Close the newly opened window
+        if (myWindow) {
+            myWindow.close();
+        } else {
+            alert('No window to close!');
+        }
+
+        setTimeout(function(){
+            alert("This alert show after 10s")
+        },3000);
+    }
+
+    </script>
+</body>
+</html>
