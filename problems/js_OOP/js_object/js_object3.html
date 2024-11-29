@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="demo"></p>
+    
+
+
+
+    <script>
+        const person = {
+        first_name: "John",
+        last_name: "Doe",
+        age: 28,
+        eyeColor: "blue",    
+    };
+
+const myobj = document.getElementById("demo");
+let text = "";
+for(let i in person){
+    text += i+":"+person[i] + "<br> ";
+}
+myobj.innerHTML = text;
+
+// const myarray = Object.values(person);
+// console.log(myarray);
+// let text = "";
+// for(let i in myarray){
+//     text += i+":"+myarray[i] + "<br>"; 
+// }
+// myobj.innerHTML = text;
+
+// const myobject = Object.entries(person);
+// console.log(myobject);
+// let text  = "";
+// for(let [key, value] of myobject){
+//     text += key +":"+value+ "<br>";
+// }
+
+// myobj.innerHTML = text;
+
+// myobj.innerHTML = JSON.stringify(person);
+
+    </script>
+</body>
+</html>
+
+
+
+
